@@ -23,3 +23,5 @@ include(":app")
 include(":utils")
 
 rootProject.name = "onebot11-server"
+include("onebot11-client-api")
+include("onebot11-client-ktor")
