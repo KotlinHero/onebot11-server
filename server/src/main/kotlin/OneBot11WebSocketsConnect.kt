@@ -1,20 +1,18 @@
-package tech.kotlinhero.onebot11.client.ktor
+package tech.kotlinhero.onebot11.server
 
-import io.ktor.client.HttpClient
-import io.ktor.client.engine.cio.CIO
-import io.ktor.client.plugins.websocket.WebSockets
-import io.ktor.client.plugins.websocket.webSocket
+import io.ktor.client.*
+import io.ktor.client.engine.cio.*
+import io.ktor.client.plugins.websocket.*
+import io.ktor.server.application.*
 import io.ktor.websocket.Frame
 import io.ktor.websocket.readText
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.launch
 
-fun main() {
-
-    val client = HttpClient(CIO) {
-        install(WebSockets)
-    }
-
-    runBlocking {
+fun Application.connectToOneBotWebSockets() {
+    launch {
+        val client = HttpClient(CIO) {
+            install(WebSockets)
+        }
         client.webSocket(
             host = "127.0.0.1",
             port = 3001,
@@ -25,6 +23,7 @@ fun main() {
                     is Frame.Text -> {
                         println(frame.readText())
                     }
+
                     else -> {
 
                     }

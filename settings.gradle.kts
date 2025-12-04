@@ -23,5 +23,5 @@ plugins {
 rootProject.name = "onebot11-server"
 include("onebot11-client-api")
 include("onebot11-client-ktor")
-include("server")
 include("onebot11-post")
+include("server")
