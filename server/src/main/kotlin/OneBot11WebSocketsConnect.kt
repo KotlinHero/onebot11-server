@@ -7,6 +7,10 @@ import io.ktor.server.application.*
 import io.ktor.websocket.Frame
 import io.ktor.websocket.readText
 import kotlinx.coroutines.launch
+import kotlinx.serialization.json.Json
+import tech.kotlinhero.onebot11.post.Event
+import tech.kotlinhero.onebot11.post.MessageEvent
+import tech.kotlinhero.onebot11.post.TextMessage
 
 fun Application.connectToOneBotWebSockets() {
     launch {
@@ -21,7 +25,20 @@ fun Application.connectToOneBotWebSockets() {
             for (frame in incoming) {
                 when (frame) {
                     is Frame.Text -> {
-                        println(frame.readText())
+                        when (val event: Event = Json.decodeFromString(frame.readText())) {
+                            is MessageEvent -> {
+                                println(event.userId)
+                                when (val message = event.message.first()) {
+                                    is TextMessage -> {
+                                        println(message.data.text)
+                                    }
+
+                                    else -> {}
+                                }
+                            }
+
+                            else -> {}
+                        }
                     }
 
                     else -> {

@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    compileOnly(projects.onebot11Post)
+    api(projects.onebot11Post)
 
     testImplementation(kotlin("test"))
 }

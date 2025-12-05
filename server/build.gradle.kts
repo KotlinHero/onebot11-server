@@ -15,6 +15,8 @@ application {
 }
 
 dependencies {
+    implementation(projects.onebot11ClientKtor)
+
     implementation(libs.logback)
     implementation(libs.ktor.serverCore)
     implementation(libs.ktor.serverNetty)

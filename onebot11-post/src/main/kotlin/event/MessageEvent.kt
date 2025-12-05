@@ -9,6 +9,7 @@ import java.time.LocalDateTime
 
 
 sealed interface MessageEvent {
+
     @Serializable
     sealed class GroupTextMessageEvent(
         @SerialName("self_id")
