@@ -5,5 +5,7 @@ enum class MessageSegmentType {
     IMAGE,
     REPLY,
     AT,
-    FACE
+    FACE,
+    JSON,
+    FORWARD
 }

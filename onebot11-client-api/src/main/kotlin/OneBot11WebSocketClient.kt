@@ -1,10 +1,8 @@
 package tech.kotlinhero.onebot11.client.api
 
-import tech.kotlinhero.onebot11.post.event.MessageEvent
+import tech.kotlinhero.onebot11.post.event.Event
 
 
 interface OneBot11WebSocketClient : OneBot11Client {
-    fun receiveMessage(eventHandler: (MessageEvent) -> Unit)
-
-    suspend fun connect()
+    suspend fun receive(eventHandler: suspend (event: Event) -> Unit)
 }

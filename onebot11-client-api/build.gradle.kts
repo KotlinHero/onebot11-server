@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm")
+    alias(libs.plugins.kotlin.serialization)
 }
 
 group = "tech.kotlinhero.onebot11.client.api"
@@ -11,6 +12,7 @@ repositories {
 
 dependencies {
     api(projects.onebot11Post)
+    compileOnly(libs.kotlinx.serialization.json)
 
     testImplementation(kotlin("test"))
 }
